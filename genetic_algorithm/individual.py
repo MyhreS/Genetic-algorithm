@@ -20,6 +20,7 @@ class Individual:
 
 
     """
+    This method is used to calculate the fitness of the individual.
     Fitness is calculated by the amount of 1's in the genes.
     """
     def calculate_fitness(self):
