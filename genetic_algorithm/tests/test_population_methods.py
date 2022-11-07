@@ -55,6 +55,10 @@ class TestPopulationMethods(unittest.TestCase):
         else: # Fail if selected more than 400 times, where it only should be picked around 200 times.
             self.assertTrue(False)
 
+        selected_two = population.selection(2)
+        self.assertEqual(len(selected_two), 2) # Check that the length of the list is correct. That is, 2.
+
+
 
 
 
