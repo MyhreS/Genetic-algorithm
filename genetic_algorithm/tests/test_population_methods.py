@@ -17,6 +17,11 @@ class TestPopulationMethods(unittest.TestCase):
         # Check that the type of the individuals in the population list is correct. That is, type: Individual.
         self.assertEqual(type(population.individuals[0]), type(a_individual))
 
+    def test_sort_population(self):
+        population = pop.Population(2, 2)
+        population.individuals[0].fitness = 1 # Set the fitness of the first individual to 1.
+        population.individuals[1].fitness = 2 # Set the fitness of the second individual to 2.
+        population.sort_population() # Sort the population by fitness.
 
 
 

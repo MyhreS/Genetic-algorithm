@@ -17,6 +17,13 @@ class Population:
 
     """
     This method is used to select the best individuals from the population.
+    Sorts the population by fitness.
+    """
+    def sort_population(self):
+        self.individuals.sort(key=lambda x: x.fitness, reverse=True)
+
+
+
     It takes the number of individuals to select as a parameter.
     It returns a list of the selected individuals.
     """
