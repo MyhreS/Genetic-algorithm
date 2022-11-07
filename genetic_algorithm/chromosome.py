@@ -2,7 +2,7 @@ from random import random
 
 """
 Chromosome is a class that represents a single chromosome.
-It has genes that are 0 or 1. When creates, this is random.
+It has genes that are 0 or 1. When created, this is random.
 The amount of genes is determined by the user through the bit_string_length parameter in the constructor.
 """
 #
