@@ -26,12 +26,12 @@ class Population:
             self.population_fitness_score += self.individuals[i].fitness
         return self.population_fitness_score
 
+
     """
     Sorts the population by fitness.
     """
     def sort_population(self):
         self.individuals.sort(key=lambda x: x.fitness, reverse=True)
-
 
 
     """
@@ -48,21 +48,35 @@ class Population:
     This method is used to select the individuals from the population to reproduce.
     It takes the number of individuals to select as a parameter.
     It returns a list of the selected individuals.
+    An individuals chance of being selected is proportional to its fitness.
+    It is done by roulette wheel selection.
     """
     def selection(self, number_of_individuals_to_select):
-        pass
+        # Check that the number of individuals to select is not larger than the population size.
+        if number_of_individuals_to_select > self.population_size:
+            raise Exception("number_of_individuals_to_select is larger than population_size")
 
+        # Calculate the total fitness score of the population.
+        total_fitness_score = self.calculate_pupulation_fitness_score()
 
+        # Create a list of the selected individuals.
+        selected_individuals = []
 
+        # Select the individuals.
+        while len(selected_individuals) < number_of_individuals_to_select:
+            # Select a random individual.
+            random_individual = self.individuals[int(random() * self.population_size)]
 
+            # Calculate the probability of selecting the individual.
+            probability = random_individual.fitness / total_fitness_score
 
+            # Select or not select based on the probability.
+            if random() < probability:
+                selected_individuals.append(random_individual)
 
-    """
-    This method is used to select an individual from the population.
-    It returns the selected individual.
-    """
-    def select_single_individual(self):
-        pass
+        # Return the list of selected individuals.
+        return selected_individuals
+
 
     """
     This method is used to perform crossover on the population.

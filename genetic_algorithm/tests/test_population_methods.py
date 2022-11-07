@@ -39,6 +39,26 @@ class TestPopulationMethods(unittest.TestCase):
 
         self.assertEqual(len(first), 1) # Check that the length of the list is correct. That is, 1.
 
+    def test_selection(self):
+        population = pop.Population(2, 2)
+        population.individuals[0].fitness = 20
+        population.individuals[1].fitness = 80
+
+        number_of_times_selected = 0
+        for i in range(1000):
+            selected = population.selection(1)
+            if selected[0].fitness == 20:
+                number_of_times_selected += 1
+        # If selected less than 400 times, the selection is correct. Around 200 should be correct, but 400 just picked for the edge cases.
+        if number_of_times_selected < 400:
+            self.assertTrue(True)
+        else: # Fail if selected more than 400 times, where it only should be picked around 200 times.
+            self.assertTrue(False)
+
+
+
+
+
 
 
 
