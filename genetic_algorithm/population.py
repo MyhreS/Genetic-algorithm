@@ -14,6 +14,17 @@ class Population:
         self.individuals = []
         for i in range(population_size):
             self.individuals.append(ind.Individual(bit_string_length))
+        self.population_fitness_score = self.calculate_pupulation_fitness_score()
+
+
+    """
+    This method is used to calculate the pupulation fitness score.
+    """
+    def calculate_pupulation_fitness_score(self):
+        self.population_fitness_score = 0
+        for i in range(self.population_size):
+            self.population_fitness_score += self.individuals[i].fitness
+        return self.population_fitness_score
 
     """
     Sorts the population by fitness.
@@ -34,11 +45,12 @@ class Population:
 
 
     """
-    This method is used to select the individuals from the population to reproduce by rank.
+    This method is used to select the individuals from the population to reproduce.
     It takes the number of individuals to select as a parameter.
     It returns a list of the selected individuals.
     """
     def selection(self, number_of_individuals_to_select):
+        pass
 
 
 

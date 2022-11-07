@@ -13,6 +13,13 @@ class TestPopulationMethods(unittest.TestCase):
         # Check that amount of individuals is correct. That is, 10.
         self.assertEqual(len(population.individuals), 10)
 
+        total_fitness = 0
+        for i in range(10):
+            total_fitness += population.individuals[i].fitness
+        # Check that the total fitness is correct. That is, 10.
+        self.assertEqual(population.population_fitness_score, total_fitness)
+
+
         a_individual = ind.Individual(2)
         # Check that the type of the individuals in the population list is correct. That is, type: Individual.
         self.assertEqual(type(population.individuals[0]), type(a_individual))
