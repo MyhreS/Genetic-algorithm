@@ -4,8 +4,7 @@ import individual as ind
 
 """
 This class is used to create a population of individuals.
-It contains a list of individuals.
-It can perform selection, crossover, and mutation on the population.
+It contains a list of individuals, the pupulation size, bit string length and the population fitness score.
 """
 class Population:
     def __init__(self, population_size, bit_string_length):
@@ -26,7 +25,6 @@ class Population:
             self.population_fitness_score += self.individuals[i].fitness
         return self.population_fitness_score
 
-
     """
     Sorts the population by fitness.
     """
@@ -39,6 +37,7 @@ class Population:
     It takes elite amount as a parameter, which is the number of elite individuals to return.
     """
     def select_elite(self, elite_amount):
+        self.sort_population()
         if elite_amount > self.population_size:
             raise Exception("elite_amount is larger than population_size")
         return self.individuals[:elite_amount]
@@ -76,21 +75,4 @@ class Population:
 
         # Return the list of selected individuals.
         return selected_individuals
-
-
-    """
-    This method is used to perform crossover on the population.
-    It takes the crossover rate as a parameter.
-    It returns the population with the crossed over individuals.
-    """
-    def crossover(self, crossover_rate):
-        pass
-
-    """
-    This method is used to perform mutation on the population.
-    It takes the mutation rate as a parameter.
-    It returns the population with the mutated individuals.
-    """
-    def mutation(self, mutation_rate):
-        pass
 
