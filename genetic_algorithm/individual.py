@@ -47,7 +47,7 @@ class Individual:
     It takes the mutation rate as a parameter.
     It returns the chromosome with the mutated genes.
     """
-    def mutate_chromosome(self, mutation_rate):
+    def mutate_individual(self, mutation_rate):
         for i in range(len(self.genes)):
             if random() < mutation_rate:
                 if self.genes[i] == 0:

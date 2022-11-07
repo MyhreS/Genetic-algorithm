@@ -38,7 +38,7 @@ class TestIndividualMethods(unittest.TestCase):
     def test_mutate_individual_genes(self):
         individual = ind.Individual(2)
         individual.genes = [0, 1]
-        individual.mutate_chromosome(1) # 100% chance of mutation
+        individual.mutate_individual(1) # 100% chance of mutation
 
         # The genes should be the oposite of what they were. That is 1, 0.
         self.assertEqual(individual.genes, [1, 0])
@@ -46,7 +46,7 @@ class TestIndividualMethods(unittest.TestCase):
     def test_fitness_score_when_mutate_individual_genes(self):
         individual = ind.Individual(2)
         individual.genes = [1, 1]
-        individual.mutate_chromosome(1) # 100% chance of mutation. The genes should be 0, 0.
+        individual.mutate_individual(1) # 100% chance of mutation. The genes should be 0, 0.
 
         # The fitness score should be the amount of genes that are 1. That is 0.
         self.assertEqual(individual.fitness, 0)
