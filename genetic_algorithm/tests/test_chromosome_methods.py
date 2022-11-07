@@ -23,6 +23,14 @@ class TestChromosomeMethods(unittest.TestCase):
         # The return value should be the old gene value.
         self.assertEqual(gene_return, copy_of_chromosome_genes[0])
 
+    def test_mutate_chromosome(self):
+        chromosome = ch.Chromosome(2)
+        copy_of_chromosome_genes = chromosome.genes.copy()
+        chromosome.mutate_chromosome(1) # 100% chance of mutation
+
+        # The genes should be different.
+        self.assertNotEqual(chromosome.genes, copy_of_chromosome_genes)
+
 
 
 

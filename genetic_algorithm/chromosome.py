@@ -17,6 +17,13 @@ class Chromosome:
         self.genes[index] = value
         return old_gene
 
+    def mutate_chromosome(self, mutation_rate):
+        for i in range(len(self.genes)):
+            if random() < mutation_rate:
+                if self.genes[i] == 0:
+                    self.genes[i] = 1
+                else:
+                    self.genes[i] = 0
 
     def __str__(self):
         return "{}".format(self.genes)
