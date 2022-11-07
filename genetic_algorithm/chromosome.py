@@ -12,6 +12,12 @@ class Chromosome:
             else:
                 self.genes.append(1)
 
+    def change_gene(self, index, value):
+        old_gene = self.genes[index]
+        self.genes[index] = value
+        return old_gene
+
+
     def __str__(self):
         return "{}".format(self.genes)
 

@@ -6,6 +6,26 @@ class TestChromosomeMethods(unittest.TestCase):
         chromosome = ch.Chromosome(10)
         self.assertEqual(len(chromosome.genes), 10)
 
+    def test_change_gene(self):
+        chromosome = ch.Chromosome(2)
+        copy_of_chromosome_genes = chromosome.genes.copy()
+
+        if chromosome.genes[0] == 0:
+            new_gene_value = 1
+        else:
+            new_gene_value = 0
+        gene_return = chromosome.change_gene(0, new_gene_value)
+
+        # If the gene was 0, it should now be 1.
+        self.assertEqual(chromosome.genes[0], new_gene_value)
+        # The other gene should not have changed.
+        self.assertEqual(chromosome.genes[1], copy_of_chromosome_genes[1])
+        # The return value should be the old gene value.
+        self.assertEqual(gene_return, copy_of_chromosome_genes[0])
+
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
