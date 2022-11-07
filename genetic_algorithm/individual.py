@@ -37,11 +37,12 @@ class Individual:
     def change_gene(self, index, value):
         old_gene = self.genes[index]
         self.genes[index] = value
+        self.calculate_fitness()
         return old_gene
 
 
     """
-    THis method is used to mutate a chromosome.
+    This method is used to mutate a chromosome.
     It takes the mutation rate as a parameter.
     It returns the chromosome with the mutated genes.
     """
@@ -52,6 +53,7 @@ class Individual:
                     self.genes[i] = 1
                 else:
                     self.genes[i] = 0
+        self.calculate_fitness()
 
 
     """

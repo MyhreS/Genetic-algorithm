@@ -27,6 +27,14 @@ class TestIndividualMethods(unittest.TestCase):
         # The return value should be 0 (its old gene value).
         self.assertEqual(return_gene, 0)
 
+    def test_fitness_score_when_change_individual_genes(self):
+        individual = ind.Individual(2)
+        individual.genes = [0, 1]
+        individual.change_gene(0, 1) # Change the first gene from 0 to 1.
+
+        # The fitness score should be the amount of genes that are 1. That is 2.
+        self.assertEqual(individual.fitness, 2)
+
     def test_mutate_individual_genes(self):
         individual = ind.Individual(2)
         individual.genes = [0, 1]
@@ -35,6 +43,13 @@ class TestIndividualMethods(unittest.TestCase):
         # The genes should be the oposite of what they were. That is 1, 0.
         self.assertEqual(individual.genes, [1, 0])
 
+    def test_fitness_score_when_mutate_individual_genes(self):
+        individual = ind.Individual(2)
+        individual.genes = [1, 1]
+        individual.mutate_chromosome(1) # 100% chance of mutation. The genes should be 0, 0.
+
+        # The fitness score should be the amount of genes that are 1. That is 0.
+        self.assertEqual(individual.fitness, 0)
 
 if __name__ == '__main__':
     unittest.main()
