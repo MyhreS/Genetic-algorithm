@@ -14,9 +14,14 @@ class Individual:
     """
     This method is used to calculate the fitness of the individual.
     It returns the fitness of the individual.
+    The fitness is calculated by the number of 1's in the chromosome.
     """
     def calculate_fitness(self):
-        pass
+        fitness = 0
+        for gene in self.chromosome.genes:
+            if gene == 1:
+                fitness += 1
+        return fitness
 
     """
     This method is used to print the individual.
