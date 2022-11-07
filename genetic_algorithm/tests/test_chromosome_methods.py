@@ -1,13 +1,13 @@
 import unittest
-import chromosome as ch
+import individual as ind
 
 class TestChromosomeMethods(unittest.TestCase):
-    def test_create_chromosome(self):
-        chromosome = ch.Chromosome(10)
+    def test_create_individual(self):
+        chromosome = ind.Individual(10)
         self.assertEqual(len(chromosome.genes), 10)
 
-    def test_change_gene(self):
-        chromosome = ch.Chromosome(2)
+    def test_change_individual(self):
+        chromosome = ind.Individual(2)
         copy_of_chromosome_genes = chromosome.genes.copy()
 
         if chromosome.genes[0] == 0:
@@ -23,8 +23,8 @@ class TestChromosomeMethods(unittest.TestCase):
         # The return value should be the old gene value.
         self.assertEqual(gene_return, copy_of_chromosome_genes[0])
 
-    def test_mutate_chromosome(self):
-        chromosome = ch.Chromosome(2)
+    def test_mutate_individual(self):
+        chromosome = ind.Individual(2)
         copy_of_chromosome_genes = chromosome.genes.copy()
         chromosome.mutate_chromosome(1) # 100% chance of mutation
 
