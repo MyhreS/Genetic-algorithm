@@ -31,36 +31,12 @@ class Individual:
         return self.fitness
 
     """
-    This method is used to change a gene in the chromosome.
-    It takes the index of the gene to change and the new value of the gene.
-    It returns the old value of the gene.
+    This method copies the individual.
     """
-    def change_gene(self, index, value):
-        old_gene = self.genes[index]
-        self.genes[index] = value
-        self.calculate_fitness()
-        return old_gene
+    def __copy__(self):
+        new_individual = Individual(len(self.genes))
+        new_individual.genes = self.genes.copy()
+        new_individual.fitness = self.fitness
+        return new_individual
 
-
-    """
-    This method is used to mutate a chromosome.
-    It takes the mutation rate as a parameter.
-    It returns the chromosome with the mutated genes.
-    """
-    def mutate_individual(self, mutation_rate):
-        for i in range(len(self.genes)):
-            if random() < mutation_rate:
-                if self.genes[i] == 0:
-                    self.genes[i] = 1
-                else:
-                    self.genes[i] = 0
-        self.calculate_fitness()
-
-
-    """
-    This method is used to print the chromosome.
-    It returns a string of the chromosome.
-    """
-    def __str__(self):
-        return "{}".format(self.genes)
 
