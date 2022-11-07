@@ -32,8 +32,5 @@ class TestChromosomeMethods(unittest.TestCase):
         self.assertNotEqual(chromosome.genes, copy_of_chromosome_genes)
 
 
-
-
-
 if __name__ == '__main__':
     unittest.main()
