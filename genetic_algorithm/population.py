@@ -16,7 +16,6 @@ class Population:
             self.individuals.append(ind.Individual(bit_string_length))
 
     """
-    This method is used to select the best individuals from the population.
     Sorts the population by fitness.
     """
     def sort_population(self):
@@ -24,11 +23,27 @@ class Population:
 
 
 
+    """
+    This method is used to get the first (after sorting, fittest) individuals in the population.
+    It takes elite amount as a parameter, which is the number of elite individuals to return.
+    """
+    def select_elite(self, elite_amount):
+        if elite_amount > self.population_size:
+            raise Exception("elite_amount is larger than population_size")
+        return self.individuals[:elite_amount]
+
+
+    """
+    This method is used to select the individuals from the population to reproduce by rank.
     It takes the number of individuals to select as a parameter.
     It returns a list of the selected individuals.
     """
     def selection(self, number_of_individuals_to_select):
-        pass
+
+
+
+
+
 
     """
     This method is used to select an individual from the population.

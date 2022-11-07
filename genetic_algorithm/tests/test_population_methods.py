@@ -23,6 +23,14 @@ class TestPopulationMethods(unittest.TestCase):
         population.individuals[1].fitness = 2 # Set the fitness of the second individual to 2.
         population.sort_population() # Sort the population by fitness.
 
+        # Check that the population is sorted by fitness. That is, the individual with the highest fitness is first, which is = 2.
+        self.assertEqual(population.individuals[0].fitness, 2)
+
+    def test_select_elite(self):
+        population = pop.Population(2, 2)
+        first = population.select_elite(1) # Select the first individual.
+
+        self.assertEqual(len(first), 1) # Check that the length of the list is correct. That is, 1.
 
 
 
