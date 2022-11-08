@@ -62,30 +62,6 @@ class TestPopulationMethods(unittest.TestCase):
         self.assertEqual(len(elites), 1) # Check that the bit_string_length of the list is correct. That is, 1.
         self.assertEqual(elites[0].fitness, 2) # Check that the individual in the list is correct. That is, the individual with the highest fitness.
 
-    def test_selection(self):
-        population = pop.Population(2, 10)
-        population.population[0].fitness = 20
-        population.population[1].fitness = 80
-
-        # Test the amount of times the first individual is selected. 20 of 100 means it should be selected 20% of the time.
-        number_of_times_selected = 0
-        for i in range(1000):
-            selected = population.selection(1)
-            if selected[0].fitness == 20:
-                number_of_times_selected += 1
-        if number_of_times_selected < 400:
-            self.assertTrue(True)
-        else:
-            self.assertTrue(False)
-
-        # Test that the type selected is an individual.
-        selected = population.selection(1)
-        self.assertEqual(type(selected[0]), type(population.population[0]))
-
-        # Test that the amount of selected individuals is correct.
-        selected = population.selection(2)
-        self.assertEqual(len(selected), 2)
-
     def test_evolve(self):
         population = pop.Population(100, 100)
         for i in range(100):

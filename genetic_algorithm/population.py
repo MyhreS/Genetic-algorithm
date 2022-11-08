@@ -49,52 +49,14 @@ class Population:
 
 
     """
-    This method is used to select the population from the population to reproduce.
-    It takes the number of population to select as a parameter.
-    It returns a list of the selected population.
-    An population chance of being selected is proportional to its fitness.
-    It is done by roulette wheel selection.
-    """
-    def selection(self, number_of_individuals_to_select):
-        # Check that the number of population to select is not larger than the population size.
-        if number_of_individuals_to_select > self.population_size:
-            raise Exception("number_of_individuals_to_select is larger than population_size")
-
-        # Make number_of_individuals_to_select even.
-        if number_of_individuals_to_select % 2 != 0:
-            number_of_individuals_to_select += 1
-
-        # Create a list of the selected population.
-        selected_individuals = []
-        self.calculate_fitness()
-
-        # Select the population.
-        while len(selected_individuals) < number_of_individuals_to_select:
-            # Select a random individual.
-            random_individual = self.population[int(random() * self.population_size)]
-
-            # Calculate the probability of selecting the individual.
-            if random_individual.fitness == 0:
-                probability = 0
-            else:
-                probability = random_individual.fitness / self.population_fitness
-
-            # Select or not select based on the probability.
-            if random() < probability:
-                selected_individuals.append(random_individual)
-
-        # Return the list of selected population.
-        return selected_individuals
-
-
-    """
     Method used to evolve the population one generation.
     It takes the elite amount, reproduction amount, crossover rate and mutation rate as parameters.
     """
-    def evolve(self, elite_amount, selection_amount, crossover_amount, mutation_amount, mutation_rate):
+    def evolve(self, elite_amount, crossover_amount, mutation_amount, mutation_rate):
 
         # Select the elite population.
         elite = self.select_elite(elite_amount)
+
         # Select the population to reproduce.
         select_fittest = self.population[0]
         select_second_fittest = self.population[1]
