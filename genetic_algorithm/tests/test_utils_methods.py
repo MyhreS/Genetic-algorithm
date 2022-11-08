@@ -20,7 +20,7 @@ class TestUtilsMethods(unittest.TestCase):
         print(individual2)
 
         # Check if the crossover was correct by checking if individual 2 has any 1's in the chromosome.
-        individual1, individual2 = ut.crossover(individual1, individual2, 1)
+        individual1, individual2 = ut.crossover(individual1, individual2, 0.1)
         print("After crossover:")
         print(individual1)
         print(individual2)
@@ -49,7 +49,7 @@ class TestUtilsMethods(unittest.TestCase):
         print(individual1)
 
         # Check if the mutation was correct by checking if individual 1 has any 0's in the chromosome.
-        ut.mutate(individual1, 1, 1)
+        ut.mutate(individual1, 1.0)
         print("After mutation:")
         print(individual1)
         true = False

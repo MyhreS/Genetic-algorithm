@@ -1,6 +1,14 @@
 from random import random
 
-def crossover(individual1, individual2, crossover_amount):
+def crossover(individual1, individual2, crossover_rate):
+    if crossover_rate == 0:
+        return individual1, individual2
+
+    crossover_amount = int(crossover_rate * len(individual1.chromosome))
+
+    if crossover_amount == 0:
+        crossover_amount = 1
+
     # Find crossover_amount random crossover points without repetition.
 
     for crossover_times in range(crossover_amount):
@@ -13,7 +21,12 @@ def crossover(individual1, individual2, crossover_amount):
     return individual1, individual2
 
 
-def mutate(individual, mutation_amount, mutation_rate):
+def mutate(individual, mutation_rate):
+    if mutation_rate == 0:
+        return individual
+    mutation_amount = int(mutation_rate * len(individual.chromosome))
+    if mutation_amount == 0:
+        mutation_amount = 1
 
     # mutation_amount is how many times blocks are picked to be mutated.
     for mutation_times in range(mutation_amount):

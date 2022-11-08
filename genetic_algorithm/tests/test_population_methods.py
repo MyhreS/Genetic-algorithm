@@ -39,9 +39,6 @@ class TestPopulationMethods(unittest.TestCase):
         # Check that the population fitness is correct.
         self.assertEqual(population.population_fitness, 20)
 
-
-
-
     def test_sort_population(self):
         population = pop.Population(2, 10)
         population.population[0].fitness = 1 # Set the fitness of the first individual to 1.
@@ -57,18 +54,18 @@ class TestPopulationMethods(unittest.TestCase):
         population.population[1].fitness = 2
         population.sort_population()
 
-        elites = population.select_elite(1) # Select the first individual.
+        elites = population.select_elite(0.1) # Select the first individual.
 
         self.assertEqual(len(elites), 1) # Check that the bit_string_length of the list is correct. That is, 1.
         self.assertEqual(elites[0].fitness, 2) # Check that the individual in the list is correct. That is, the individual with the highest fitness.
 
     def test_evolve(self):
-        population = pop.Population(100, 100)
-        for i in range(30):
-            population.evolve(1, 1, 1, 0.2)
+        population = pop.Population(10, 10)
+        for i in range(5):
+            population.evolve(0.1, 0.1, 0.4)
 
         # Check that the population size is correct.
-        self.assertEqual(len(population.population), 100)
+        self.assertEqual(len(population.population), 10)
 
 
 

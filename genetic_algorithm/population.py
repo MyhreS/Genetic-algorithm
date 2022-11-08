@@ -41,9 +41,13 @@ class Population:
     This method is used to get the first (after sorting, fittest) population in the population.
     It takes elite amount as a parameter, which is the number of elite population to return.
     """
-    def select_elite(self, elite_amount):
-        if elite_amount > self.population_size:
-            raise Exception("elite_amount is larger than population_size")
+    def select_elite(self, elite_rate):
+        if elite_rate == 0:
+            return []
+        elite_amount = int(self.population_size * elite_rate)
+        if elite_amount == 0:
+            elite_amount = 1
+
         return self.population[:elite_amount]
 
 
@@ -51,9 +55,9 @@ class Population:
     Method used to evolve the population one generation.
     It takes the elite amount, reproduction amount, crossover rate and mutation rate as parameters.
     """
-    def evolve(self, elite_amount, crossover_amount, mutation_amount, mutation_rate):
+    def evolve(self, elite_rate, crossover_rate, mutation_rate):
         # Select the elite population.
-        elite = self.select_elite(elite_amount)
+        elite = self.select_elite(elite_rate)
 
         # Select parents to reproduce.
         select_fittest = self.population[0]
@@ -69,10 +73,10 @@ class Population:
             # Crossover two random parents from selected population.
             parent1 = copy.deepcopy(select_fittest)
             parent2 = copy.deepcopy(select_second_fittest)
-            offspring1, offspring2 = ut.crossover(parent1, parent2, crossover_amount)
+            offspring1, offspring2 = ut.crossover(parent1, parent2, crossover_rate)
             # Mutate the offspring.
-            offspring1 = ut.mutate(offspring1, mutation_amount, mutation_rate)
-            offspring2 = ut.mutate(offspring2, mutation_amount, mutation_rate)
+            offspring1 = ut.mutate(offspring1, mutation_rate)
+            offspring2 = ut.mutate(offspring2, mutation_rate)
             # Calculate the fitness of the offsprings
             offspring1.calculate_fitness()
             offspring2.calculate_fitness()
