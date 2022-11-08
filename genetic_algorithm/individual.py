@@ -2,9 +2,8 @@ from random import random
 
 """
 Individual is a class that represents a single individual in a population.
-It contains a list of genes, which are represented as 0 and 1.
+It contains a chromosome, which is list of genes, which are represented as blocks of 0 and 1.
 The genes are randomly generated when the individual is created.
-The individual recieves a fitness score when it is created or changed in some way.
 """
 #
 #
@@ -36,19 +35,13 @@ class Individual:
             split = 4
         else:
             raise ValueError("Bit string bit_string_length must be at least 10")
-
-
-
         # Add genes to chromosome
         chromosome = []
         for i in range(self.bit_string_length):
             chromosome.append(round(random()))
         temp = [chromosome[i:i+split] for i in range(0, len(chromosome), split)]
         chromosome = temp
-
         return chromosome
-
-
 
     """
     This method is used to calculate the fitness of the individual.

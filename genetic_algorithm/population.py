@@ -1,4 +1,3 @@
-from random import random
 import individual as ind
 import copy
 import utils as ut
@@ -53,11 +52,10 @@ class Population:
     It takes the elite amount, reproduction amount, crossover rate and mutation rate as parameters.
     """
     def evolve(self, elite_amount, crossover_amount, mutation_amount, mutation_rate):
-
         # Select the elite population.
         elite = self.select_elite(elite_amount)
 
-        # Select the population to reproduce.
+        # Select parents to reproduce.
         select_fittest = self.population[0]
         select_second_fittest = self.population[1]
 
@@ -72,22 +70,23 @@ class Population:
             parent1 = copy.deepcopy(select_fittest)
             parent2 = copy.deepcopy(select_second_fittest)
             offspring1, offspring2 = ut.crossover(parent1, parent2, crossover_amount)
-
             # Mutate the offspring.
             offspring1 = ut.mutate(offspring1, mutation_amount, mutation_rate)
             offspring2 = ut.mutate(offspring2, mutation_amount, mutation_rate)
-
+            # Calculate the fitness of the offsprings
             offspring1.calculate_fitness()
             offspring2.calculate_fitness()
-
+            # Add the fittest offspring to the population.
             if offspring1.fitness > offspring2.fitness:
                 self.population.append(offspring1)
             else:
                 self.population.append(offspring2)
 
+        # Calculate the populations fitness and sort the population.
         self.calculate_fitness()
         self.sort_population()
 
+        # Print the fittest individual in the population.
         print(self.population[0])
 
 
