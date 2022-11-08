@@ -7,12 +7,12 @@ It craetes a population and evolves it by applying the genetic operators.
 It performes elitism, and reproduction by selection, crossover and mutation.
 """
 
-def plot(log, title):
+def plot(log, title, ylabel):
     x = range(len(log))
     plt.plot(x, log)
     plt.title(title)
     plt.xlabel("Generation")
-    plt.ylabel("Fitness")
+    plt.ylabel(ylabel)
     plt.show()
 
 
@@ -40,9 +40,9 @@ class GeneticAlgorithm:
             if population.log_best_fitness[-1] == population.bit_string_length:
                 break
 
-        plot(population.log_best_fitness, "Best fitness")
-        plot(population.log_average_fitness, "Average fitness")
-        plot(population.log_std_dev_fitness, "Standard deviation of fitness")
+        plot(population.log_best_fitness, "Best fitness", "Fitness")
+        plot(population.log_average_fitness, "Average fitness", "Fitness")
+        plot(population.log_std_dev_fitness, "Standard deviation of fitness", "Fitness deviation")
 
 
 
