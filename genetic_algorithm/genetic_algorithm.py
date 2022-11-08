@@ -1,6 +1,5 @@
 
 import population as pop
-import individual as ind
 
 """
 A class that is used to represent the generic algorithm.
@@ -17,6 +16,7 @@ class GeneticAlgorithm:
         self.selection_amount = int(selection_rate * population_size)
         self.crossover_amount = int(crossover_rate * bit_string_length)
         self.mutation_rate = mutation_rate
+        self.mutation_amount = 2
         self.population = pop.Population(population_size, bit_string_length)
 
     """
@@ -24,7 +24,7 @@ class GeneticAlgorithm:
     """
     def evolve(self):
         for i in range(self.generations):
-            self.population.evolve(self.elite_amount, self.selection_amount, self.crossover_amount, self.mutation_rate)
+            self.population.evolve(self.elite_amount, self.crossover_amount, self.mutation_amount, self.mutation_rate)
 
 
 
