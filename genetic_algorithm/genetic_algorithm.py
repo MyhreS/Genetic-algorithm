@@ -1,10 +1,21 @@
 import population as pop
+import matplotlib.pyplot as plt
 
 """
 A class that is used to represent the generic algorithm.
 It craetes a population and evolves it by applying the genetic operators.
 It performes elitism, and reproduction by selection, crossover and mutation.
 """
+
+def plot(log, title):
+    x = range(len(log))
+    plt.plot(x, log)
+    plt.title(title)
+    plt.xlabel("Generation")
+    plt.ylabel("Fitness")
+    plt.show()
+
+
 
 class GeneticAlgorithm:
 
@@ -26,18 +37,19 @@ class GeneticAlgorithm:
 
         for i in range(self.generations):
             population.evolve(self.elite_rate, self.crossover_rate, self.mutation_rate)
-
-            if population.log_best_fitness[-1] == population.population_size:
+            if population.log_best_fitness[-1] == population.bit_string_length:
                 break
-        # Print the best results log.
-        for fitness in population.log_best_fitness:
-            print(fitness)
+
+        plot(population.log_best_fitness, "Best fitness")
+        plot(population.log_average_fitness, "Average fitness")
+        plot(population.log_std_dev_fitness, "Standard deviation of fitness")
+
 
 
 
 
 if __name__ == '__main__':
-    genetic_algorithm = GeneticAlgorithm(20, 20, 20, 0.1, 0.2, 0.2)
+    genetic_algorithm = GeneticAlgorithm(200, 200, 100, 0.1, 0.2, 0.2)
     genetic_algorithm.evolve()
 
 
