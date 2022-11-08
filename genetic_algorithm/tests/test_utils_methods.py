@@ -59,6 +59,22 @@ class TestUtilsMethods(unittest.TestCase):
                     true = True
         self.assertEqual(true, True)
 
+    def test_standard_deviation(self):
+        # Create a population.
+        population = pop.Population(10, 10)
+        # Set every second individual fitness to 1.
+        # Set every other individual fitness to 0.
+        for i in range(len(population.population)):
+            if i % 2 == 0:
+                population.population[i].fitness = 1
+            else:
+                population.population[i].fitness = 0
+
+        # Calculate the standard deviation.
+        standard_deviation = ut.standard_deviation(population.population)
+        # Check if the standard deviation is correct.
+        self.assertEqual(standard_deviation, 0.5)
+
 
 
 

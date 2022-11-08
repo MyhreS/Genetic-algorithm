@@ -17,6 +17,9 @@ class Population:
         self.population_fitness = 0
         self.calculate_fitness()
         self.sort_population()
+        self.log_best_fitness = []
+        self.log_average_fitness = []
+        self.log_std_dev_fitness = []
 
     """
     This method is used to calculate each individual fitness and the populations fitness.
@@ -90,8 +93,10 @@ class Population:
         self.calculate_fitness()
         self.sort_population()
 
-        # Print the fittest individual in the population.
-        print(self.population[0])
+        # Log the best fitness, average fitness and standard deviation of the population.
+        self.log_best_fitness.append(self.population[0].fitness)
+        self.log_average_fitness.append(self.population_fitness / self.population_size)
+        self.log_std_dev_fitness.append(ut.standard_deviation(self.population))
 
 
     """

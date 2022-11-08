@@ -48,3 +48,17 @@ def mutate(individual, mutation_rate):
                 else:
                     individual.chromosome[mutation_index][i] = 0
     return individual
+
+"""
+This method returns the standard deviation of the fitness of the population.
+"""
+def standard_deviation(population):
+    fitness_sum = 0
+    for individual in population:
+        fitness_sum += individual.fitness
+    mean = fitness_sum / len(population)
+    variance = 0
+    for individual in population:
+        variance += (individual.fitness - mean) ** 2
+    variance = variance / len(population)
+    return variance ** 0.5
