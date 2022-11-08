@@ -63,15 +63,6 @@ class Individual:
         return self.fitness
 
     """
-    This method copies the individual.
-    """
-    def __copy__(self):
-        new_individual = Individual(self.bit_string_length)
-        new_individual.chromosome = self.chromosome.copy()
-        new_individual.fitness = self.fitness
-        return new_individual
-
-    """
     This methods is a string representation of the individual, by printing the chromosome and fitness.
     """
     def __str__(self):
