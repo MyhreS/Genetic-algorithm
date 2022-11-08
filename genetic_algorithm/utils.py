@@ -1,5 +1,9 @@
 from random import random
 
+"""
+This method mutates two individuals by swapping a random number of gene blocks in the chromosomes.
+The amount of gene-blocks to swap is determined by the crossover_rate.
+"""
 def crossover(individual1, individual2, crossover_rate):
     if crossover_rate == 0:
         return individual1, individual2
@@ -21,6 +25,10 @@ def crossover(individual1, individual2, crossover_rate):
     return individual1, individual2
 
 
+"""
+This method mutates an individual by swapping genes in gene blocks in the individuals chromosome.
+THe amount of mutation gene-blocks that is selected, and the amount of genes inside of it that is mutates is determined by the mutation_rate. 
+"""
 def mutate(individual, mutation_rate):
     if mutation_rate == 0:
         return individual
