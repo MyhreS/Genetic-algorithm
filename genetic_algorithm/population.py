@@ -9,6 +9,9 @@ It contains a list of population, the pupulation size, bit string bit_string_len
 """
 class Population:
     def __init__(self, population_size, bit_string_length):
+        if population_size < 10:
+            raise ValueError("Population size must be at least 10")
+
         self.population_size = population_size
         self.bit_string_length = bit_string_length
         self.population = []
