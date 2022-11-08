@@ -64,8 +64,8 @@ class TestPopulationMethods(unittest.TestCase):
 
     def test_evolve(self):
         population = pop.Population(100, 100)
-        for i in range(100):
-            population.evolve(1, 2, 1, 1, 0.2)
+        for i in range(30):
+            population.evolve(1, 1, 1, 0.2)
 
         # Check that the population size is correct.
         self.assertEqual(len(population.population), 100)
