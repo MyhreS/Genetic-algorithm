@@ -6,6 +6,15 @@ A class that is used to represent the generic algorithm.
 It creates a population and evolves it by applyng the given rates.
 """
 
+# Global variables.
+GENERATIONS = 100
+POPULATION_SIZE = 100
+BIT_STRING_LENGTH = 100
+ELITE_RATE = 0.1
+CROSSOVER_RATE = 0.7
+MUTATION_RATE = 0.1
+
+
 def plot(log, title, ylabel):
     x = range(len(log))
     plt.plot(x, log)
@@ -72,7 +81,7 @@ class GeneticAlgorithm:
 
 
 if __name__ == '__main__':
-    genetic_algorithm = GeneticAlgorithm(50, 10, 100, 0.1, 0.2, 0.2)
+    genetic_algorithm = GeneticAlgorithm(GENERATIONS, POPULATION_SIZE, BIT_STRING_LENGTH, ELITE_RATE, CROSSOVER_RATE, MUTATION_RATE)
     genetic_algorithm.evolve()
 
 
